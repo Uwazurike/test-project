@@ -1,0 +1,67 @@
+﻿@model TaskInsider.Insider
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Insider</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InsiderFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InsiderFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InsiderLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InsiderLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InsiderEmailAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InsiderEmailAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InsiderPhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InsiderPhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address.StreetAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address.StreetAddress)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.InsiderID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

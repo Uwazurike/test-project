@@ -1,0 +1,106 @@
+﻿@model IEnumerable<TaskInsider.ServiceRequest>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HoursOverMinimum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalHoursWorked)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FinalEarnings)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceCompletionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InsiderPayDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientPaymentStatu.ClientPaymentStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Insider.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InsiderPayStatu.InsiderPayStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequestStatu.RequestStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Service.ServiceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceRequest2.ServiceRequestID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoursOverMinimum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalHoursWorked)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FinalEarnings)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceCompletionDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InsiderPayDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientPaymentStatu.ClientPaymentStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Insider.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InsiderPayStatu.InsiderPayStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequestStatu.RequestStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Service.ServiceName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceRequest2.ServiceRequestID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ServiceRequestID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ServiceRequestID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ServiceRequestID })
+        </td>
+    </tr>
+}
+
+</table>

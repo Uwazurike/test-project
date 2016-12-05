@@ -1,0 +1,43 @@
+﻿@model TaskInsider.ClientProfileModule
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ClientProfileModule</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientHeaderPhoto.HeaderFileName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientHeaderPhoto.HeaderFileName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientPhoto.PhotoFileName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientPhoto.PhotoFileName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientProfile.ClientProfileID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientProfile.ClientProfileID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ClientProfileModuleID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,82 @@
+﻿@model IEnumerable<TaskInsider.Insider>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InsiderFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InsiderLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InsiderEmailAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InsiderPhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address.StreetAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address.ZipCode)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InsiderFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InsiderLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InsiderEmailAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InsiderPhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address.StreetAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address.State)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address.ZipCode)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.InsiderID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.InsiderID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.InsiderID })
+        </td>
+    </tr>
+}
+
+</table>

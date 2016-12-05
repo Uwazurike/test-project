@@ -1,0 +1,951 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TaskInsiderModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddressID" />
+    </Key>
+    <Property Name="AddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StreetAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ClientAddresses" Relationship="Self.FK_ClientAddress_Address" FromRole="Address" ToRole="ClientAddress" />
+    <NavigationProperty Name="Insiders" Relationship="Self.FK_Insider_Address" FromRole="Address" ToRole="Insider" />
+  </EntityType>
+  <EntityType Name="AddressType">
+    <Key>
+      <PropertyRef Name="AddressTypeID" />
+    </Key>
+    <Property Name="AddressTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AddressType1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ClientAddresses" Relationship="Self.FK_ClientAddress_AddressType" FromRole="AddressType" ToRole="ClientAddress" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ClientID" />
+    </Key>
+    <Property Name="ClientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ClientFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ClientLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ClientEmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ClientPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ClientAddresses" Relationship="Self.FK_ClientAddress_Client" FromRole="Client" ToRole="ClientAddress" />
+    <NavigationProperty Name="ClientHeaderPhotoes" Relationship="Self.FK_ClientHeaderPhoto_Client" FromRole="Client" ToRole="ClientHeaderPhoto" />
+    <NavigationProperty Name="ClientPaymentMethods" Relationship="Self.FK_ClientPaymentMethod_Client" FromRole="Client" ToRole="ClientPaymentMethod" />
+    <NavigationProperty Name="ClientPhotoes" Relationship="Self.FK_ClientPhoto_Client" FromRole="Client" ToRole="ClientPhoto" />
+    <NavigationProperty Name="ClientProfiles" Relationship="Self.FK_ClientProfile_Client" FromRole="Client" ToRole="ClientProfile" />
+    <NavigationProperty Name="ServiceRequests" Relationship="Self.FK_ServiceRequest_Client" FromRole="Client" ToRole="ServiceRequest" />
+    <NavigationProperty Name="UserTypes" Relationship="Self.FK_UserType_Client" FromRole="Client" ToRole="UserType" />
+  </EntityType>
+  <EntityType Name="ClientAddress">
+    <Key>
+      <PropertyRef Name="ClientAddressID" />
+    </Key>
+    <Property Name="ClientAddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientID" Type="Int32" Nullable="false" />
+    <Property Name="AddressID" Type="Int32" Nullable="false" />
+    <Property Name="AddressTypeID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Address" Relationship="Self.FK_ClientAddress_Address" FromRole="ClientAddress" ToRole="Address" />
+    <NavigationProperty Name="AddressType" Relationship="Self.FK_ClientAddress_AddressType" FromRole="ClientAddress" ToRole="AddressType" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_ClientAddress_Client" FromRole="ClientAddress" ToRole="Client" />
+  </EntityType>
+  <EntityType Name="ClientHeaderPhoto">
+    <Key>
+      <PropertyRef Name="ClientHeaderPhotoID" />
+    </Key>
+    <Property Name="ClientHeaderPhotoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientID" Type="Int32" Nullable="false" />
+    <Property Name="HeaderFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_ClientHeaderPhoto_Client" FromRole="ClientHeaderPhoto" ToRole="Client" />
+    <NavigationProperty Name="ClientProfileModules" Relationship="Self.FK_ClientProfileModule_ClientHeaderPhoto" FromRole="ClientHeaderPhoto" ToRole="ClientProfileModule" />
+  </EntityType>
+  <EntityType Name="ClientPaymentMethod">
+    <Key>
+      <PropertyRef Name="ClientPaymentMethodID" />
+    </Key>
+    <Property Name="ClientPaymentMethodID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientID" Type="Int32" Nullable="false" />
+    <Property Name="PaymentMethodID" Type="Int32" Nullable="false" />
+    <Property Name="CardNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpirationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CvC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_ClientPaymentMethod_Client" FromRole="ClientPaymentMethod" ToRole="Client" />
+    <NavigationProperty Name="PaymentMethod" Relationship="Self.FK_ClientPaymentMethod_PaymentMethod" FromRole="ClientPaymentMethod" ToRole="PaymentMethod" />
+    <NavigationProperty Name="Payments" Relationship="Self.FK_Payment_ClientPaymentMethod" FromRole="ClientPaymentMethod" ToRole="Payment" />
+  </EntityType>
+  <EntityType Name="ClientPaymentStatu">
+    <Key>
+      <PropertyRef Name="ClientPaymentStatusID" />
+    </Key>
+    <Property Name="ClientPaymentStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientPaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ServiceRequests" Relationship="Self.FK_ServiceRequest_ClientPaymentStatus" FromRole="ClientPaymentStatus" ToRole="ServiceRequest" />
+  </EntityType>
+  <EntityType Name="ClientPhoto">
+    <Key>
+      <PropertyRef Name="ClientPhotoID" />
+    </Key>
+    <Property Name="ClientPhotoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientID" Type="Int32" Nullable="false" />
+    <Property Name="PhotoFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_ClientPhoto_Client" FromRole="ClientPhoto" ToRole="Client" />
+    <NavigationProperty Name="ClientProfileModules" Relationship="Self.FK_ClientProfileModule_ClientPhoto" FromRole="ClientPhoto" ToRole="ClientProfileModule" />
+  </EntityType>
+  <EntityType Name="ClientProfile">
+    <Key>
+      <PropertyRef Name="ClientProfileID" />
+    </Key>
+    <Property Name="ClientProfileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_ClientProfile_Client" FromRole="ClientProfile" ToRole="Client" />
+    <NavigationProperty Name="ClientProfileModules" Relationship="Self.FK_ClientProfileModule_ClientProfile" FromRole="ClientProfile" ToRole="ClientProfileModule" />
+  </EntityType>
+  <EntityType Name="ClientProfileModule">
+    <Key>
+      <PropertyRef Name="ClientProfileModuleID" />
+    </Key>
+    <Property Name="ClientProfileModuleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientProfileID" Type="Int32" Nullable="false" />
+    <Property Name="ClientPhotoID" Type="Int32" Nullable="false" />
+    <Property Name="ClientHeaderPhotoID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ClientHeaderPhoto" Relationship="Self.FK_ClientProfileModule_ClientHeaderPhoto" FromRole="ClientProfileModule" ToRole="ClientHeaderPhoto" />
+    <NavigationProperty Name="ClientPhoto" Relationship="Self.FK_ClientProfileModule_ClientPhoto" FromRole="ClientProfileModule" ToRole="ClientPhoto" />
+    <NavigationProperty Name="ClientProfile" Relationship="Self.FK_ClientProfileModule_ClientProfile" FromRole="ClientProfileModule" ToRole="ClientProfile" />
+  </EntityType>
+  <EntityType Name="Insider">
+    <Key>
+      <PropertyRef Name="InsiderID" />
+    </Key>
+    <Property Name="InsiderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="InsiderFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="InsiderLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AddressID" Type="Int32" Nullable="false" />
+    <Property Name="InsiderEmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="InsiderPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Address" Relationship="Self.FK_Insider_Address" FromRole="Insider" ToRole="Address" />
+    <NavigationProperty Name="InsiderHeaderPhotoes" Relationship="Self.FK_InsiderHeaderPhoto_Insider" FromRole="Insider" ToRole="InsiderHeaderPhoto" />
+    <NavigationProperty Name="InsiderPayInfoes" Relationship="Self.FK_InsiderPayInfo_Insider" FromRole="Insider" ToRole="InsiderPayInfo" />
+    <NavigationProperty Name="InsiderPhotoes" Relationship="Self.FK_InsiderPhoto_Insider" FromRole="Insider" ToRole="InsiderPhoto" />
+    <NavigationProperty Name="InsiderProfiles" Relationship="Self.FK_InsiderProfile_Insider" FromRole="Insider" ToRole="InsiderProfile" />
+    <NavigationProperty Name="InsiderSkills" Relationship="Self.FK_InsiderSkill_Insider" FromRole="Insider" ToRole="InsiderSkill" />
+    <NavigationProperty Name="Services" Relationship="Self.FK_Service_Insider" FromRole="Insider" ToRole="Service" />
+    <NavigationProperty Name="ServiceRequests" Relationship="Self.FK_ServiceRequest_Insider" FromRole="Insider" ToRole="ServiceRequest" />
+    <NavigationProperty Name="UserTypes" Relationship="Self.FK_UserType_Insider" FromRole="Insider" ToRole="UserType" />
+  </EntityType>
+  <EntityType Name="InsiderHeaderPhoto">
+    <Key>
+      <PropertyRef Name="InsiderHeaderPhotoID" />
+    </Key>
+    <Property Name="InsiderHeaderPhotoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InsiderID" Type="Int32" Nullable="false" />
+    <Property Name="HeaderFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Insider" Relationship="Self.FK_InsiderHeaderPhoto_Insider" FromRole="InsiderHeaderPhoto" ToRole="Insider" />
+    <NavigationProperty Name="InsiderProfileModules" Relationship="Self.FK_InsiderProfileModule_InsiderHeaderPhoto" FromRole="InsiderHeaderPhoto" ToRole="InsiderProfileModule" />
+  </EntityType>
+  <EntityType Name="InsiderPayInfo">
+    <Key>
+      <PropertyRef Name="InsiderPayInfoID" />
+    </Key>
+    <Property Name="InsiderPayInfoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InsiderID" Type="Int32" Nullable="false" />
+    <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RoutingNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AccountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Insider" Relationship="Self.FK_InsiderPayInfo_Insider" FromRole="InsiderPayInfo" ToRole="Insider" />
+  </EntityType>
+  <EntityType Name="InsiderPayStatu">
+    <Key>
+      <PropertyRef Name="InsiderPayStatusID" />
+    </Key>
+    <Property Name="InsiderPayStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InsiderPayStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ServiceRequests" Relationship="Self.FK_ServiceRequest_InsiderPayStatus" FromRole="InsiderPayStatus" ToRole="ServiceRequest" />
+  </EntityType>
+  <EntityType Name="InsiderPhoto">
+    <Key>
+      <PropertyRef Name="InsiderPhotoID" />
+    </Key>
+    <Property Name="InsiderPhotoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InsiderID" Type="Int32" Nullable="false" />
+    <Property Name="PhotoFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Insider" Relationship="Self.FK_InsiderPhoto_Insider" FromRole="InsiderPhoto" ToRole="Insider" />
+    <NavigationProperty Name="InsiderProfileModules" Relationship="Self.FK_InsiderProfileModule_InsiderPhoto" FromRole="InsiderPhoto" ToRole="InsiderProfileModule" />
+  </EntityType>
+  <EntityType Name="InsiderProfile">
+    <Key>
+      <PropertyRef Name="InsiderProfileID" />
+    </Key>
+    <Property Name="InsiderProfileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InsiderID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Insider" Relationship="Self.FK_InsiderProfile_Insider" FromRole="InsiderProfile" ToRole="Insider" />
+    <NavigationProperty Name="InsiderProfileModules" Relationship="Self.FK_InsiderProfileModule_InsiderProfile" FromRole="InsiderProfile" ToRole="InsiderProfileModule" />
+  </EntityType>
+  <EntityType Name="InsiderProfileModule">
+    <Key>
+      <PropertyRef Name="InsiderProfileModuleID" />
+    </Key>
+    <Property Name="InsiderProfileModuleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InsiderProfileID" Type="Int32" Nullable="false" />
+    <Property Name="InsiderPhotoID" Type="Int32" Nullable="false" />
+    <Property Name="InsiderHeaderPhotoID" Type="Int32" Nullable="false" />
+    <Property Name="InsiderSkillID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="InsiderHeaderPhoto" Relationship="Self.FK_InsiderProfileModule_InsiderHeaderPhoto" FromRole="InsiderProfileModule" ToRole="InsiderHeaderPhoto" />
+    <NavigationProperty Name="InsiderPhoto" Relationship="Self.FK_InsiderProfileModule_InsiderPhoto" FromRole="InsiderProfileModule" ToRole="InsiderPhoto" />
+    <NavigationProperty Name="InsiderProfile" Relationship="Self.FK_InsiderProfileModule_InsiderProfile" FromRole="InsiderProfileModule" ToRole="InsiderProfile" />
+    <NavigationProperty Name="InsiderSkill" Relationship="Self.FK_InsiderProfileModule_InsiderSkill" FromRole="InsiderProfileModule" ToRole="InsiderSkill" />
+  </EntityType>
+  <EntityType Name="InsiderSkill">
+    <Key>
+      <PropertyRef Name="InsiderSkillID" />
+    </Key>
+    <Property Name="InsiderSkillID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InsiderID" Type="Int32" Nullable="false" />
+    <Property Name="SkillID" Type="Int32" Nullable="false" />
+    <Property Name="SkillLevelID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Insider" Relationship="Self.FK_InsiderSkill_Insider" FromRole="InsiderSkill" ToRole="Insider" />
+    <NavigationProperty Name="InsiderProfileModules" Relationship="Self.FK_InsiderProfileModule_InsiderSkill" FromRole="InsiderSkill" ToRole="InsiderProfileModule" />
+    <NavigationProperty Name="Skill" Relationship="Self.FK_InsiderSkill_Skill" FromRole="InsiderSkill" ToRole="Skill" />
+    <NavigationProperty Name="SkillLevel" Relationship="Self.FK_InsiderSkill_SkillLevel" FromRole="InsiderSkill" ToRole="SkillLevel" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="PaymentID" />
+    </Key>
+    <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientPaymentMethodID" Type="Int32" Nullable="false" />
+    <Property Name="ServiceRequestID" Type="Int32" Nullable="false" />
+    <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PaymentAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="TermsOfService" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ClientPaymentMethod" Relationship="Self.FK_Payment_ClientPaymentMethod" FromRole="Payment" ToRole="ClientPaymentMethod" />
+    <NavigationProperty Name="ServiceRequest" Relationship="Self.FK_Payment_ServiceRequest" FromRole="Payment" ToRole="ServiceRequest" />
+  </EntityType>
+  <EntityType Name="PaymentMethod">
+    <Key>
+      <PropertyRef Name="PaymentMethodID" />
+    </Key>
+    <Property Name="PaymentMethodID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentMethod1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ClientPaymentMethods" Relationship="Self.FK_ClientPaymentMethod_PaymentMethod" FromRole="PaymentMethod" ToRole="ClientPaymentMethod" />
+  </EntityType>
+  <EntityType Name="RequestStatu">
+    <Key>
+      <PropertyRef Name="RequestStatusID" />
+    </Key>
+    <Property Name="RequestStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RequestStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ServiceRequests" Relationship="Self.FK_ServiceRequest_RequestStatus" FromRole="RequestStatus" ToRole="ServiceRequest" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="ServiceID" />
+    </Key>
+    <Property Name="ServiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceTypeID" Type="Int32" Nullable="false" />
+    <Property Name="InsiderID" Type="Int32" Nullable="false" />
+    <Property Name="ServiceName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HourlyRate" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="MinBookableHours" Type="Int32" Nullable="false" />
+    <Property Name="ServiceCharge" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Insider" Relationship="Self.FK_Service_Insider" FromRole="Service" ToRole="Insider" />
+    <NavigationProperty Name="ServiceType" Relationship="Self.FK_Service_ServiceType" FromRole="Service" ToRole="ServiceType" />
+    <NavigationProperty Name="ServiceRequests" Relationship="Self.FK_ServiceRequest_Service" FromRole="Service" ToRole="ServiceRequest" />
+  </EntityType>
+  <EntityType Name="ServiceOrderItem">
+    <Key>
+      <PropertyRef Name="ServiceOrderItemsID" />
+    </Key>
+    <Property Name="ServiceOrderItemsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ServiceRequest" Relationship="Self.FK_ServiceOrderItems_ServiceRequest" FromRole="ServiceOrderItems" ToRole="ServiceRequest" />
+  </EntityType>
+  <EntityType Name="ServiceRequest">
+    <Key>
+      <PropertyRef Name="ServiceRequestID" />
+    </Key>
+    <Property Name="ServiceRequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientID" Type="Int32" Nullable="false" />
+    <Property Name="RelatedServiceRequestID" Type="Int32" Nullable="false" />
+    <Property Name="ServiceID" Type="Int32" Nullable="false" />
+    <Property Name="InsiderID" Type="Int32" Nullable="false" />
+    <Property Name="HoursOverMinimum" Type="Int32" />
+    <Property Name="TotalHoursWorked" Type="Int32" Nullable="false" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="FinalEarnings" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ClientPaymentStatusID" Type="Int32" Nullable="false" />
+    <Property Name="RequestStatusID" Type="Int32" Nullable="false" />
+    <Property Name="ServiceCompletionDate" Type="DateTime" Precision="3" />
+    <Property Name="InsiderPayStatusID" Type="Int32" Nullable="false" />
+    <Property Name="InsiderPayDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_ServiceRequest_Client" FromRole="ServiceRequest" ToRole="Client" />
+    <NavigationProperty Name="ClientPaymentStatu" Relationship="Self.FK_ServiceRequest_ClientPaymentStatus" FromRole="ServiceRequest" ToRole="ClientPaymentStatus" />
+    <NavigationProperty Name="Insider" Relationship="Self.FK_ServiceRequest_Insider" FromRole="ServiceRequest" ToRole="Insider" />
+    <NavigationProperty Name="InsiderPayStatu" Relationship="Self.FK_ServiceRequest_InsiderPayStatus" FromRole="ServiceRequest" ToRole="InsiderPayStatus" />
+    <NavigationProperty Name="Payments" Relationship="Self.FK_Payment_ServiceRequest" FromRole="ServiceRequest" ToRole="Payment" />
+    <NavigationProperty Name="RequestStatu" Relationship="Self.FK_ServiceRequest_RequestStatus" FromRole="ServiceRequest" ToRole="RequestStatus" />
+    <NavigationProperty Name="Service" Relationship="Self.FK_ServiceRequest_Service" FromRole="ServiceRequest" ToRole="Service" />
+    <NavigationProperty Name="ServiceOrderItems" Relationship="Self.FK_ServiceOrderItems_ServiceRequest" FromRole="ServiceRequest" ToRole="ServiceOrderItems" />
+    <NavigationProperty Name="ServiceRequest1" Relationship="Self.FK_ServiceRequest_ServiceRequest" FromRole="ServiceRequest" ToRole="ServiceRequest1" />
+    <NavigationProperty Name="ServiceRequest2" Relationship="Self.FK_ServiceRequest_ServiceRequest" FromRole="ServiceRequest1" ToRole="ServiceRequest" />
+  </EntityType>
+  <EntityType Name="ServiceType">
+    <Key>
+      <PropertyRef Name="ServiceTypeID" />
+    </Key>
+    <Property Name="ServiceTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceImageFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ServiceTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ServiceTypeDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Services" Relationship="Self.FK_Service_ServiceType" FromRole="ServiceType" ToRole="Service" />
+  </EntityType>
+  <EntityType Name="Skill">
+    <Key>
+      <PropertyRef Name="SkillID" />
+    </Key>
+    <Property Name="SkillID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SkillName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="InsiderSkills" Relationship="Self.FK_InsiderSkill_Skill" FromRole="Skill" ToRole="InsiderSkill" />
+  </EntityType>
+  <EntityType Name="SkillLevel">
+    <Key>
+      <PropertyRef Name="SkillLevelID" />
+    </Key>
+    <Property Name="SkillLevelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SkillLevelName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="InsiderSkills" Relationship="Self.FK_InsiderSkill_SkillLevel" FromRole="SkillLevel" ToRole="InsiderSkill" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="UserTypeID" />
+    </Key>
+    <Property Name="UserTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientID" Type="Int32" Nullable="false" />
+    <Property Name="InsiderID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_UserType_Client" FromRole="UserType" ToRole="Client" />
+    <NavigationProperty Name="Insider" Relationship="Self.FK_UserType_Insider" FromRole="UserType" ToRole="Insider" />
+  </EntityType>
+  <Association Name="FK_ClientAddress_Address">
+    <End Role="Address" Type="Self.Address" Multiplicity="1" />
+    <End Role="ClientAddress" Type="Self.ClientAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="ClientAddress">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Insider_Address">
+    <End Role="Address" Type="Self.Address" Multiplicity="1" />
+    <End Role="Insider" Type="Self.Insider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="Insider">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientAddress_AddressType">
+    <End Role="AddressType" Type="Self.AddressType" Multiplicity="1" />
+    <End Role="ClientAddress" Type="Self.ClientAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AddressType">
+        <PropertyRef Name="AddressTypeID" />
+      </Principal>
+      <Dependent Role="ClientAddress">
+        <PropertyRef Name="AddressTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientAddress_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="ClientAddress" Type="Self.ClientAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="ClientAddress">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientHeaderPhoto_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="ClientHeaderPhoto" Type="Self.ClientHeaderPhoto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="ClientHeaderPhoto">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientPaymentMethod_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="ClientPaymentMethod" Type="Self.ClientPaymentMethod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="ClientPaymentMethod">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientPhoto_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="ClientPhoto" Type="Self.ClientPhoto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="ClientPhoto">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientProfile_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="ClientProfile" Type="Self.ClientProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="ClientProfile">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequest_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="ServiceRequest">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserType_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="UserType" Type="Self.UserType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="UserType">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientProfileModule_ClientHeaderPhoto">
+    <End Role="ClientHeaderPhoto" Type="Self.ClientHeaderPhoto" Multiplicity="1" />
+    <End Role="ClientProfileModule" Type="Self.ClientProfileModule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientHeaderPhoto">
+        <PropertyRef Name="ClientHeaderPhotoID" />
+      </Principal>
+      <Dependent Role="ClientProfileModule">
+        <PropertyRef Name="ClientHeaderPhotoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientPaymentMethod_PaymentMethod">
+    <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1" />
+    <End Role="ClientPaymentMethod" Type="Self.ClientPaymentMethod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethod">
+        <PropertyRef Name="PaymentMethodID" />
+      </Principal>
+      <Dependent Role="ClientPaymentMethod">
+        <PropertyRef Name="PaymentMethodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_ClientPaymentMethod">
+    <End Role="ClientPaymentMethod" Type="Self.ClientPaymentMethod" Multiplicity="1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientPaymentMethod">
+        <PropertyRef Name="ClientPaymentMethodID" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="ClientPaymentMethodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequest_ClientPaymentStatus">
+    <End Role="ClientPaymentStatus" Type="Self.ClientPaymentStatu" Multiplicity="1" />
+    <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientPaymentStatus">
+        <PropertyRef Name="ClientPaymentStatusID" />
+      </Principal>
+      <Dependent Role="ServiceRequest">
+        <PropertyRef Name="ClientPaymentStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientProfileModule_ClientPhoto">
+    <End Role="ClientPhoto" Type="Self.ClientPhoto" Multiplicity="1" />
+    <End Role="ClientProfileModule" Type="Self.ClientProfileModule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientPhoto">
+        <PropertyRef Name="ClientPhotoID" />
+      </Principal>
+      <Dependent Role="ClientProfileModule">
+        <PropertyRef Name="ClientPhotoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientProfileModule_ClientProfile">
+    <End Role="ClientProfile" Type="Self.ClientProfile" Multiplicity="1" />
+    <End Role="ClientProfileModule" Type="Self.ClientProfileModule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientProfile">
+        <PropertyRef Name="ClientProfileID" />
+      </Principal>
+      <Dependent Role="ClientProfileModule">
+        <PropertyRef Name="ClientProfileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InsiderHeaderPhoto_Insider">
+    <End Role="Insider" Type="Self.Insider" Multiplicity="1" />
+    <End Role="InsiderHeaderPhoto" Type="Self.InsiderHeaderPhoto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Insider">
+        <PropertyRef Name="InsiderID" />
+      </Principal>
+      <Dependent Role="InsiderHeaderPhoto">
+        <PropertyRef Name="InsiderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InsiderPayInfo_Insider">
+    <End Role="Insider" Type="Self.Insider" Multiplicity="1" />
+    <End Role="InsiderPayInfo" Type="Self.InsiderPayInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Insider">
+        <PropertyRef Name="InsiderID" />
+      </Principal>
+      <Dependent Role="InsiderPayInfo">
+        <PropertyRef Name="InsiderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InsiderPhoto_Insider">
+    <End Role="Insider" Type="Self.Insider" Multiplicity="1" />
+    <End Role="InsiderPhoto" Type="Self.InsiderPhoto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Insider">
+        <PropertyRef Name="InsiderID" />
+      </Principal>
+      <Dependent Role="InsiderPhoto">
+        <PropertyRef Name="InsiderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InsiderProfile_Insider">
+    <End Role="Insider" Type="Self.Insider" Multiplicity="1" />
+    <End Role="InsiderProfile" Type="Self.InsiderProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Insider">
+        <PropertyRef Name="InsiderID" />
+      </Principal>
+      <Dependent Role="InsiderProfile">
+        <PropertyRef Name="InsiderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InsiderSkill_Insider">
+    <End Role="Insider" Type="Self.Insider" Multiplicity="1" />
+    <End Role="InsiderSkill" Type="Self.InsiderSkill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Insider">
+        <PropertyRef Name="InsiderID" />
+      </Principal>
+      <Dependent Role="InsiderSkill">
+        <PropertyRef Name="InsiderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Service_Insider">
+    <End Role="Insider" Type="Self.Insider" Multiplicity="1" />
+    <End Role="Service" Type="Self.Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Insider">
+        <PropertyRef Name="InsiderID" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="InsiderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequest_Insider">
+    <End Role="Insider" Type="Self.Insider" Multiplicity="1" />
+    <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Insider">
+        <PropertyRef Name="InsiderID" />
+      </Principal>
+      <Dependent Role="ServiceRequest">
+        <PropertyRef Name="InsiderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserType_Insider">
+    <End Role="Insider" Type="Self.Insider" Multiplicity="1" />
+    <End Role="UserType" Type="Self.UserType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Insider">
+        <PropertyRef Name="InsiderID" />
+      </Principal>
+      <Dependent Role="UserType">
+        <PropertyRef Name="InsiderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InsiderProfileModule_InsiderHeaderPhoto">
+    <End Role="InsiderHeaderPhoto" Type="Self.InsiderHeaderPhoto" Multiplicity="1" />
+    <End Role="InsiderProfileModule" Type="Self.InsiderProfileModule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InsiderHeaderPhoto">
+        <PropertyRef Name="InsiderHeaderPhotoID" />
+      </Principal>
+      <Dependent Role="InsiderProfileModule">
+        <PropertyRef Name="InsiderHeaderPhotoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequest_InsiderPayStatus">
+    <End Role="InsiderPayStatus" Type="Self.InsiderPayStatu" Multiplicity="1" />
+    <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InsiderPayStatus">
+        <PropertyRef Name="InsiderPayStatusID" />
+      </Principal>
+      <Dependent Role="ServiceRequest">
+        <PropertyRef Name="InsiderPayStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InsiderProfileModule_InsiderPhoto">
+    <End Role="InsiderPhoto" Type="Self.InsiderPhoto" Multiplicity="1" />
+    <End Role="InsiderProfileModule" Type="Self.InsiderProfileModule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InsiderPhoto">
+        <PropertyRef Name="InsiderPhotoID" />
+      </Principal>
+      <Dependent Role="InsiderProfileModule">
+        <PropertyRef Name="InsiderPhotoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InsiderProfileModule_InsiderProfile">
+    <End Role="InsiderProfile" Type="Self.InsiderProfile" Multiplicity="1" />
+    <End Role="InsiderProfileModule" Type="Self.InsiderProfileModule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InsiderProfile">
+        <PropertyRef Name="InsiderProfileID" />
+      </Principal>
+      <Dependent Role="InsiderProfileModule">
+        <PropertyRef Name="InsiderProfileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InsiderProfileModule_InsiderSkill">
+    <End Role="InsiderSkill" Type="Self.InsiderSkill" Multiplicity="1" />
+    <End Role="InsiderProfileModule" Type="Self.InsiderProfileModule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InsiderSkill">
+        <PropertyRef Name="InsiderSkillID" />
+      </Principal>
+      <Dependent Role="InsiderProfileModule">
+        <PropertyRef Name="InsiderSkillID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InsiderSkill_Skill">
+    <End Role="Skill" Type="Self.Skill" Multiplicity="1" />
+    <End Role="InsiderSkill" Type="Self.InsiderSkill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Skill">
+        <PropertyRef Name="SkillID" />
+      </Principal>
+      <Dependent Role="InsiderSkill">
+        <PropertyRef Name="SkillID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InsiderSkill_SkillLevel">
+    <End Role="SkillLevel" Type="Self.SkillLevel" Multiplicity="1" />
+    <End Role="InsiderSkill" Type="Self.InsiderSkill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SkillLevel">
+        <PropertyRef Name="SkillLevelID" />
+      </Principal>
+      <Dependent Role="InsiderSkill">
+        <PropertyRef Name="SkillLevelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_ServiceRequest">
+    <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceRequest">
+        <PropertyRef Name="ServiceRequestID" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="ServiceRequestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequest_RequestStatus">
+    <End Role="RequestStatus" Type="Self.RequestStatu" Multiplicity="1" />
+    <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RequestStatus">
+        <PropertyRef Name="RequestStatusID" />
+      </Principal>
+      <Dependent Role="ServiceRequest">
+        <PropertyRef Name="RequestStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Service_ServiceType">
+    <End Role="ServiceType" Type="Self.ServiceType" Multiplicity="1" />
+    <End Role="Service" Type="Self.Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceType">
+        <PropertyRef Name="ServiceTypeID" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="ServiceTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequest_Service">
+    <End Role="Service" Type="Self.Service" Multiplicity="1" />
+    <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="ServiceID" />
+      </Principal>
+      <Dependent Role="ServiceRequest">
+        <PropertyRef Name="ServiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceOrderItems_ServiceRequest">
+    <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="1" />
+    <End Role="ServiceOrderItems" Type="Self.ServiceOrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceRequest">
+        <PropertyRef Name="ServiceRequestID" />
+      </Principal>
+      <Dependent Role="ServiceOrderItems">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequest_ServiceRequest">
+    <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="1" />
+    <End Role="ServiceRequest1" Type="Self.ServiceRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceRequest">
+        <PropertyRef Name="ServiceRequestID" />
+      </Principal>
+      <Dependent Role="ServiceRequest1">
+        <PropertyRef Name="RelatedServiceRequestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TaskInsiderEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Addresses" EntityType="Self.Address" />
+    <EntitySet Name="AddressTypes" EntityType="Self.AddressType" />
+    <EntitySet Name="Clients" EntityType="Self.Client" />
+    <EntitySet Name="ClientAddresses" EntityType="Self.ClientAddress" />
+    <EntitySet Name="ClientHeaderPhotoes" EntityType="Self.ClientHeaderPhoto" />
+    <EntitySet Name="ClientPaymentMethods" EntityType="Self.ClientPaymentMethod" />
+    <EntitySet Name="ClientPaymentStatus" EntityType="Self.ClientPaymentStatu" />
+    <EntitySet Name="ClientPhotoes" EntityType="Self.ClientPhoto" />
+    <EntitySet Name="ClientProfiles" EntityType="Self.ClientProfile" />
+    <EntitySet Name="ClientProfileModules" EntityType="Self.ClientProfileModule" />
+    <EntitySet Name="Insiders" EntityType="Self.Insider" />
+    <EntitySet Name="InsiderHeaderPhotoes" EntityType="Self.InsiderHeaderPhoto" />
+    <EntitySet Name="InsiderPayInfoes" EntityType="Self.InsiderPayInfo" />
+    <EntitySet Name="InsiderPayStatus" EntityType="Self.InsiderPayStatu" />
+    <EntitySet Name="InsiderPhotoes" EntityType="Self.InsiderPhoto" />
+    <EntitySet Name="InsiderProfiles" EntityType="Self.InsiderProfile" />
+    <EntitySet Name="InsiderProfileModules" EntityType="Self.InsiderProfileModule" />
+    <EntitySet Name="InsiderSkills" EntityType="Self.InsiderSkill" />
+    <EntitySet Name="Payments" EntityType="Self.Payment" />
+    <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethod" />
+    <EntitySet Name="RequestStatus" EntityType="Self.RequestStatu" />
+    <EntitySet Name="Services" EntityType="Self.Service" />
+    <EntitySet Name="ServiceOrderItems" EntityType="Self.ServiceOrderItem" />
+    <EntitySet Name="ServiceRequests" EntityType="Self.ServiceRequest" />
+    <EntitySet Name="ServiceTypes" EntityType="Self.ServiceType" />
+    <EntitySet Name="Skills" EntityType="Self.Skill" />
+    <EntitySet Name="SkillLevels" EntityType="Self.SkillLevel" />
+    <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+    <AssociationSet Name="FK_ClientAddress_Address" Association="Self.FK_ClientAddress_Address">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="ClientAddress" EntitySet="ClientAddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Insider_Address" Association="Self.FK_Insider_Address">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="Insider" EntitySet="Insiders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientAddress_AddressType" Association="Self.FK_ClientAddress_AddressType">
+      <End Role="AddressType" EntitySet="AddressTypes" />
+      <End Role="ClientAddress" EntitySet="ClientAddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientAddress_Client" Association="Self.FK_ClientAddress_Client">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="ClientAddress" EntitySet="ClientAddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientHeaderPhoto_Client" Association="Self.FK_ClientHeaderPhoto_Client">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="ClientHeaderPhoto" EntitySet="ClientHeaderPhotoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientPaymentMethod_Client" Association="Self.FK_ClientPaymentMethod_Client">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="ClientPaymentMethod" EntitySet="ClientPaymentMethods" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientPhoto_Client" Association="Self.FK_ClientPhoto_Client">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="ClientPhoto" EntitySet="ClientPhotoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientProfile_Client" Association="Self.FK_ClientProfile_Client">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="ClientProfile" EntitySet="ClientProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequest_Client" Association="Self.FK_ServiceRequest_Client">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="ServiceRequest" EntitySet="ServiceRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserType_Client" Association="Self.FK_UserType_Client">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="UserType" EntitySet="UserTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientProfileModule_ClientHeaderPhoto" Association="Self.FK_ClientProfileModule_ClientHeaderPhoto">
+      <End Role="ClientHeaderPhoto" EntitySet="ClientHeaderPhotoes" />
+      <End Role="ClientProfileModule" EntitySet="ClientProfileModules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientPaymentMethod_PaymentMethod" Association="Self.FK_ClientPaymentMethod_PaymentMethod">
+      <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+      <End Role="ClientPaymentMethod" EntitySet="ClientPaymentMethods" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_ClientPaymentMethod" Association="Self.FK_Payment_ClientPaymentMethod">
+      <End Role="ClientPaymentMethod" EntitySet="ClientPaymentMethods" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequest_ClientPaymentStatus" Association="Self.FK_ServiceRequest_ClientPaymentStatus">
+      <End Role="ClientPaymentStatus" EntitySet="ClientPaymentStatus" />
+      <End Role="ServiceRequest" EntitySet="ServiceRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientProfileModule_ClientPhoto" Association="Self.FK_ClientProfileModule_ClientPhoto">
+      <End Role="ClientPhoto" EntitySet="ClientPhotoes" />
+      <End Role="ClientProfileModule" EntitySet="ClientProfileModules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientProfileModule_ClientProfile" Association="Self.FK_ClientProfileModule_ClientProfile">
+      <End Role="ClientProfile" EntitySet="ClientProfiles" />
+      <End Role="ClientProfileModule" EntitySet="ClientProfileModules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InsiderHeaderPhoto_Insider" Association="Self.FK_InsiderHeaderPhoto_Insider">
+      <End Role="Insider" EntitySet="Insiders" />
+      <End Role="InsiderHeaderPhoto" EntitySet="InsiderHeaderPhotoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InsiderPayInfo_Insider" Association="Self.FK_InsiderPayInfo_Insider">
+      <End Role="Insider" EntitySet="Insiders" />
+      <End Role="InsiderPayInfo" EntitySet="InsiderPayInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InsiderPhoto_Insider" Association="Self.FK_InsiderPhoto_Insider">
+      <End Role="Insider" EntitySet="Insiders" />
+      <End Role="InsiderPhoto" EntitySet="InsiderPhotoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InsiderProfile_Insider" Association="Self.FK_InsiderProfile_Insider">
+      <End Role="Insider" EntitySet="Insiders" />
+      <End Role="InsiderProfile" EntitySet="InsiderProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InsiderSkill_Insider" Association="Self.FK_InsiderSkill_Insider">
+      <End Role="Insider" EntitySet="Insiders" />
+      <End Role="InsiderSkill" EntitySet="InsiderSkills" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Service_Insider" Association="Self.FK_Service_Insider">
+      <End Role="Insider" EntitySet="Insiders" />
+      <End Role="Service" EntitySet="Services" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequest_Insider" Association="Self.FK_ServiceRequest_Insider">
+      <End Role="Insider" EntitySet="Insiders" />
+      <End Role="ServiceRequest" EntitySet="ServiceRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserType_Insider" Association="Self.FK_UserType_Insider">
+      <End Role="Insider" EntitySet="Insiders" />
+      <End Role="UserType" EntitySet="UserTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InsiderProfileModule_InsiderHeaderPhoto" Association="Self.FK_InsiderProfileModule_InsiderHeaderPhoto">
+      <End Role="InsiderHeaderPhoto" EntitySet="InsiderHeaderPhotoes" />
+      <End Role="InsiderProfileModule" EntitySet="InsiderProfileModules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequest_InsiderPayStatus" Association="Self.FK_ServiceRequest_InsiderPayStatus">
+      <End Role="InsiderPayStatus" EntitySet="InsiderPayStatus" />
+      <End Role="ServiceRequest" EntitySet="ServiceRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InsiderProfileModule_InsiderPhoto" Association="Self.FK_InsiderProfileModule_InsiderPhoto">
+      <End Role="InsiderPhoto" EntitySet="InsiderPhotoes" />
+      <End Role="InsiderProfileModule" EntitySet="InsiderProfileModules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InsiderProfileModule_InsiderProfile" Association="Self.FK_InsiderProfileModule_InsiderProfile">
+      <End Role="InsiderProfile" EntitySet="InsiderProfiles" />
+      <End Role="InsiderProfileModule" EntitySet="InsiderProfileModules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InsiderProfileModule_InsiderSkill" Association="Self.FK_InsiderProfileModule_InsiderSkill">
+      <End Role="InsiderSkill" EntitySet="InsiderSkills" />
+      <End Role="InsiderProfileModule" EntitySet="InsiderProfileModules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InsiderSkill_Skill" Association="Self.FK_InsiderSkill_Skill">
+      <End Role="Skill" EntitySet="Skills" />
+      <End Role="InsiderSkill" EntitySet="InsiderSkills" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InsiderSkill_SkillLevel" Association="Self.FK_InsiderSkill_SkillLevel">
+      <End Role="SkillLevel" EntitySet="SkillLevels" />
+      <End Role="InsiderSkill" EntitySet="InsiderSkills" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_ServiceRequest" Association="Self.FK_Payment_ServiceRequest">
+      <End Role="ServiceRequest" EntitySet="ServiceRequests" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequest_RequestStatus" Association="Self.FK_ServiceRequest_RequestStatus">
+      <End Role="RequestStatus" EntitySet="RequestStatus" />
+      <End Role="ServiceRequest" EntitySet="ServiceRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Service_ServiceType" Association="Self.FK_Service_ServiceType">
+      <End Role="ServiceType" EntitySet="ServiceTypes" />
+      <End Role="Service" EntitySet="Services" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequest_Service" Association="Self.FK_ServiceRequest_Service">
+      <End Role="Service" EntitySet="Services" />
+      <End Role="ServiceRequest" EntitySet="ServiceRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceOrderItems_ServiceRequest" Association="Self.FK_ServiceOrderItems_ServiceRequest">
+      <End Role="ServiceRequest" EntitySet="ServiceRequests" />
+      <End Role="ServiceOrderItems" EntitySet="ServiceOrderItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequest_ServiceRequest" Association="Self.FK_ServiceRequest_ServiceRequest">
+      <End Role="ServiceRequest" EntitySet="ServiceRequests" />
+      <End Role="ServiceRequest1" EntitySet="ServiceRequests" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

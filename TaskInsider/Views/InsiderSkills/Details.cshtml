@@ -1,0 +1,43 @@
+﻿@model TaskInsider.InsiderSkill
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>InsiderSkill</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Insider.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Insider.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Skill.SkillName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Skill.SkillName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SkillLevel.SkillLevelName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkillLevel.SkillLevelName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.InsiderSkillID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

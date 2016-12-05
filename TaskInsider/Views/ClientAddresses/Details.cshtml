@@ -1,0 +1,43 @@
+﻿@model TaskInsider.ClientAddress
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ClientAddress</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Address.StreetAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address.StreetAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressType.AddressType1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressType.AddressType1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.UserName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ClientAddressID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

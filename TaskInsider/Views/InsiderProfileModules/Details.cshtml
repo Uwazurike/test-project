@@ -1,0 +1,51 @@
+﻿@model TaskInsider.InsiderProfileModule
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>InsiderProfileModule</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.InsiderHeaderPhoto.HeaderFileName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InsiderHeaderPhoto.HeaderFileName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InsiderPhoto.PhotoFileName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InsiderPhoto.PhotoFileName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InsiderProfile.InsiderProfileID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InsiderProfile.InsiderProfileID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InsiderSkill.InsiderSkillID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InsiderSkill.InsiderSkillID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.InsiderProfileModuleID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

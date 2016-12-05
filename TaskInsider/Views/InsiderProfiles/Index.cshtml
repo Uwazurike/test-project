@@ -1,0 +1,34 @@
+﻿@model IEnumerable<TaskInsider.InsiderProfile>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Insider.UserName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Insider.UserName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.InsiderProfileID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.InsiderProfileID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.InsiderProfileID })
+        </td>
+    </tr>
+}
+
+</table>

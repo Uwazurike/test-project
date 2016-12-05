@@ -1,0 +1,34 @@
+﻿@model IEnumerable<TaskInsider.ServiceOrderItem>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceRequest.ServiceRequestID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceRequest.ServiceRequestID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ServiceOrderItemsID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ServiceOrderItemsID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ServiceOrderItemsID })
+        </td>
+    </tr>
+}
+
+</table>

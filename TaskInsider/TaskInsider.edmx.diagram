@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9cb096af5b8f4c1798ac62e4e77c19db" Name="Diagram1">
+        <EntityTypeShape EntityType="TaskInsiderModel.Address" Width="1.5" PointX="1.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.AddressType" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.Client" Width="1.5" PointX="0.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.ClientAddress" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.ClientHeaderPhoto" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.ClientPaymentMethod" Width="1.5" PointX="6" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.ClientPaymentStatu" Width="1.5" PointX="3.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.ClientPhoto" Width="1.5" PointX="3" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.ClientProfile" Width="1.5" PointX="3" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.ClientProfileModule" Width="1.5" PointX="5.25" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.Insider" Width="1.5" PointX="3.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.InsiderHeaderPhoto" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.InsiderPayInfo" Width="1.5" PointX="6" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.InsiderPayStatu" Width="1.5" PointX="3.75" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.InsiderPhoto" Width="1.5" PointX="6" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.InsiderProfile" Width="1.5" PointX="6" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.InsiderProfileModule" Width="1.5" PointX="8.25" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.InsiderSkill" Width="1.5" PointX="9" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.Payment" Width="1.5" PointX="8.25" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.PaymentMethod" Width="1.5" PointX="3.75" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.RequestStatu" Width="1.5" PointX="3.75" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.Service" Width="1.5" PointX="3.75" PointY="31.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.ServiceOrderItem" Width="1.5" PointX="8.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.ServiceRequest" Width="1.5" PointX="6" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.ServiceType" Width="1.5" PointX="1.5" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.Skill" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.SkillLevel" Width="1.5" PointX="6.75" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskInsiderModel.UserType" Width="1.5" PointX="3" PointY="17.75" IsExpanded="true" />
+        <AssociationConnector Association="TaskInsiderModel.FK_ClientAddress_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_Insider_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_ClientAddress_AddressType" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_ClientAddress_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_ClientHeaderPhoto_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_ClientPaymentMethod_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_ClientPhoto_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_ClientProfile_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_ServiceRequest_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_UserType_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_ClientProfileModule_ClientHeaderPhoto" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_ClientPaymentMethod_PaymentMethod" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_Payment_ClientPaymentMethod" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_ServiceRequest_ClientPaymentStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_ClientProfileModule_ClientPhoto" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_ClientProfileModule_ClientProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_InsiderHeaderPhoto_Insider" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_InsiderPayInfo_Insider" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_InsiderPhoto_Insider" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_InsiderProfile_Insider" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_InsiderSkill_Insider" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_Service_Insider" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_ServiceRequest_Insider" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_UserType_Insider" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_InsiderProfileModule_InsiderHeaderPhoto" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_ServiceRequest_InsiderPayStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_InsiderProfileModule_InsiderPhoto" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_InsiderProfileModule_InsiderProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_InsiderProfileModule_InsiderSkill" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_InsiderSkill_Skill" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_InsiderSkill_SkillLevel" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_Payment_ServiceRequest" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_ServiceRequest_RequestStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_Service_ServiceType" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_ServiceRequest_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_ServiceOrderItems_ServiceRequest" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskInsiderModel.FK_ServiceRequest_ServiceRequest" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

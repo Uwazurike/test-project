@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("Manage Addresses", "Index", "Addresses")</li>
+                <li>@Html.ActionLink("Manage Address Types", "Index", "AddressTypes")</li>
+                <li>@Html.ActionLink("Manage Client Addresses", "Index", "ClientAddresses")</li>
+                <li>@Html.ActionLink("Manage Client Header Image", "Index", "ClientHeaderPhotoes")</li>
+                <li>@Html.ActionLink("Manage Client Payment Methods", "Index", "ClientPaymentMethods")</li>
+                <li>@Html.ActionLink("Manage Client Payment Status", "Index", "ClientPaymentStatus")</li>
+                <li>@Html.ActionLink("Manage Client Profile Image", "Index", "ClientPhotoes")</li>
+                <li>@Html.ActionLink("Manage Client Profile Module", "Index", "ClientProfileModules")</li>
+                <li>@Html.ActionLink("Manage Client Profiles", "Index", "ClientProfiles")</li>
+                <li>@Html.ActionLink("Manage Clients", "Index", "Clients")</li>
+                <li>@Html.ActionLink("Manage Insider Header Image", "Index", "InsiderHeaderPhotoes")</li>
+                <li>@Html.ActionLink("Manage Insider Banking Details", "Index", "InsiderPayInfoes")</li>
+                <li>@Html.ActionLink("Manage Insider Pay Status", "Index", "InsiderPayStatus")</li>
+                <li>@Html.ActionLink("Manage Insider Profile Image", "Index", "InsiderPhotoes")</li>
+                <li>@Html.ActionLink("Manage Insider Profile Module", "Index", "InsiderProfileModules")</li>
+                <li>@Html.ActionLink("Manage Insider Profiles", "Index", "InsiderProfiles")</li>
+                <li>@Html.ActionLink("Manage Insiders", "Index", "Insiders")</li>
+                <li>@Html.ActionLink("Manage Insider Skills", "Index", "InsiderSkills")</li>
+                <li>@Html.ActionLink("Manage Payment methods", "Index", "PaymentMethods")</li>
+                <li>@Html.ActionLink("Manage Payments", "Index", "Payments")</li>
+                <li>@Html.ActionLink("Manage Request Status", "Index", "RequestStatus")</li>
+                <li>@Html.ActionLink("Manage Service Order Items", "Index", "ServiceOrderItems")</li>
+                <li>@Html.ActionLink("Manage Service Requests", "Index", "ServiceRequests")</li>
+                <li>@Html.ActionLink("Manage Services", "Index", "Services")</li>
+                <li>@Html.ActionLink("Manage Service Types", "Index", "ServiceTypes")</li>
+                <li>@Html.ActionLink("Manage Skills", "Index", "Skills")</li>
+                <li>@Html.ActionLink("Manage SkillLevels", "Index", "SkillLevels")</li>
+                <li>@Html.ActionLink("Manage User Types", "Index", "UserTypes")</li>
+            </ul>          
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

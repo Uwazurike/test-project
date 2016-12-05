@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TaskInsiderModelStoreContainer" CdmEntityContainer="TaskInsiderEntities">
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="TaskInsiderModel.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AddressTypes">
+      <EntityTypeMapping TypeName="TaskInsiderModel.AddressType">
+        <MappingFragment StoreEntitySet="AddressType">
+          <ScalarProperty Name="AddressTypeID" ColumnName="AddressTypeID" />
+          <ScalarProperty Name="AddressType1" ColumnName="AddressType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="TaskInsiderModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="ClientFirstName" ColumnName="ClientFirstName" />
+          <ScalarProperty Name="ClientLastName" ColumnName="ClientLastName" />
+          <ScalarProperty Name="ClientEmailAddress" ColumnName="ClientEmailAddress" />
+          <ScalarProperty Name="ClientPhoneNumber" ColumnName="ClientPhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientAddresses">
+      <EntityTypeMapping TypeName="TaskInsiderModel.ClientAddress">
+        <MappingFragment StoreEntitySet="ClientAddress">
+          <ScalarProperty Name="ClientAddressID" ColumnName="ClientAddressID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="AddressTypeID" ColumnName="AddressTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientHeaderPhotoes">
+      <EntityTypeMapping TypeName="TaskInsiderModel.ClientHeaderPhoto">
+        <MappingFragment StoreEntitySet="ClientHeaderPhoto">
+          <ScalarProperty Name="ClientHeaderPhotoID" ColumnName="ClientHeaderPhotoID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="HeaderFileName" ColumnName="HeaderFileName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientPaymentMethods">
+      <EntityTypeMapping TypeName="TaskInsiderModel.ClientPaymentMethod">
+        <MappingFragment StoreEntitySet="ClientPaymentMethod">
+          <ScalarProperty Name="ClientPaymentMethodID" ColumnName="ClientPaymentMethodID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="PaymentMethodID" ColumnName="PaymentMethodID" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="CvC" ColumnName="CvC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientPaymentStatus">
+      <EntityTypeMapping TypeName="TaskInsiderModel.ClientPaymentStatu">
+        <MappingFragment StoreEntitySet="ClientPaymentStatus">
+          <ScalarProperty Name="ClientPaymentStatusID" ColumnName="ClientPaymentStatusID" />
+          <ScalarProperty Name="ClientPaymentStatus" ColumnName="ClientPaymentStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientPhotoes">
+      <EntityTypeMapping TypeName="TaskInsiderModel.ClientPhoto">
+        <MappingFragment StoreEntitySet="ClientPhoto">
+          <ScalarProperty Name="ClientPhotoID" ColumnName="ClientPhotoID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="PhotoFileName" ColumnName="PhotoFileName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientProfiles">
+      <EntityTypeMapping TypeName="TaskInsiderModel.ClientProfile">
+        <MappingFragment StoreEntitySet="ClientProfile">
+          <ScalarProperty Name="ClientProfileID" ColumnName="ClientProfileID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientProfileModules">
+      <EntityTypeMapping TypeName="TaskInsiderModel.ClientProfileModule">
+        <MappingFragment StoreEntitySet="ClientProfileModule">
+          <ScalarProperty Name="ClientProfileModuleID" ColumnName="ClientProfileModuleID" />
+          <ScalarProperty Name="ClientProfileID" ColumnName="ClientProfileID" />
+          <ScalarProperty Name="ClientPhotoID" ColumnName="ClientPhotoID" />
+          <ScalarProperty Name="ClientHeaderPhotoID" ColumnName="ClientHeaderPhotoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Insiders">
+      <EntityTypeMapping TypeName="TaskInsiderModel.Insider">
+        <MappingFragment StoreEntitySet="Insider">
+          <ScalarProperty Name="InsiderID" ColumnName="InsiderID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="InsiderFirstName" ColumnName="InsiderFirstName" />
+          <ScalarProperty Name="InsiderLastName" ColumnName="InsiderLastName" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="InsiderEmailAddress" ColumnName="InsiderEmailAddress" />
+          <ScalarProperty Name="InsiderPhoneNumber" ColumnName="InsiderPhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InsiderHeaderPhotoes">
+      <EntityTypeMapping TypeName="TaskInsiderModel.InsiderHeaderPhoto">
+        <MappingFragment StoreEntitySet="InsiderHeaderPhoto">
+          <ScalarProperty Name="InsiderHeaderPhotoID" ColumnName="InsiderHeaderPhotoID" />
+          <ScalarProperty Name="InsiderID" ColumnName="InsiderID" />
+          <ScalarProperty Name="HeaderFileName" ColumnName="HeaderFileName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InsiderPayInfoes">
+      <EntityTypeMapping TypeName="TaskInsiderModel.InsiderPayInfo">
+        <MappingFragment StoreEntitySet="InsiderPayInfo">
+          <ScalarProperty Name="InsiderPayInfoID" ColumnName="InsiderPayInfoID" />
+          <ScalarProperty Name="InsiderID" ColumnName="InsiderID" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="RoutingNumber" ColumnName="RoutingNumber" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InsiderPayStatus">
+      <EntityTypeMapping TypeName="TaskInsiderModel.InsiderPayStatu">
+        <MappingFragment StoreEntitySet="InsiderPayStatus">
+          <ScalarProperty Name="InsiderPayStatusID" ColumnName="InsiderPayStatusID" />
+          <ScalarProperty Name="InsiderPayStatus" ColumnName="InsiderPayStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InsiderPhotoes">
+      <EntityTypeMapping TypeName="TaskInsiderModel.InsiderPhoto">
+        <MappingFragment StoreEntitySet="InsiderPhoto">
+          <ScalarProperty Name="InsiderPhotoID" ColumnName="InsiderPhotoID" />
+          <ScalarProperty Name="InsiderID" ColumnName="InsiderID" />
+          <ScalarProperty Name="PhotoFileName" ColumnName="PhotoFileName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InsiderProfiles">
+      <EntityTypeMapping TypeName="TaskInsiderModel.InsiderProfile">
+        <MappingFragment StoreEntitySet="InsiderProfile">
+          <ScalarProperty Name="InsiderProfileID" ColumnName="InsiderProfileID" />
+          <ScalarProperty Name="InsiderID" ColumnName="InsiderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InsiderProfileModules">
+      <EntityTypeMapping TypeName="TaskInsiderModel.InsiderProfileModule">
+        <MappingFragment StoreEntitySet="InsiderProfileModule">
+          <ScalarProperty Name="InsiderProfileModuleID" ColumnName="InsiderProfileModuleID" />
+          <ScalarProperty Name="InsiderProfileID" ColumnName="InsiderProfileID" />
+          <ScalarProperty Name="InsiderPhotoID" ColumnName="InsiderPhotoID" />
+          <ScalarProperty Name="InsiderHeaderPhotoID" ColumnName="InsiderHeaderPhotoID" />
+          <ScalarProperty Name="InsiderSkillID" ColumnName="InsiderSkillID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InsiderSkills">
+      <EntityTypeMapping TypeName="TaskInsiderModel.InsiderSkill">
+        <MappingFragment StoreEntitySet="InsiderSkill">
+          <ScalarProperty Name="InsiderSkillID" ColumnName="InsiderSkillID" />
+          <ScalarProperty Name="InsiderID" ColumnName="InsiderID" />
+          <ScalarProperty Name="SkillID" ColumnName="SkillID" />
+          <ScalarProperty Name="SkillLevelID" ColumnName="SkillLevelID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="TaskInsiderModel.Payment">
+        <MappingFragment StoreEntitySet="Payment">
+          <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+          <ScalarProperty Name="ClientPaymentMethodID" ColumnName="ClientPaymentMethodID" />
+          <ScalarProperty Name="ServiceRequestID" ColumnName="ServiceRequestID" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+          <ScalarProperty Name="TermsOfService" ColumnName="TermsOfService" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentMethods">
+      <EntityTypeMapping TypeName="TaskInsiderModel.PaymentMethod">
+        <MappingFragment StoreEntitySet="PaymentMethod">
+          <ScalarProperty Name="PaymentMethodID" ColumnName="PaymentMethodID" />
+          <ScalarProperty Name="PaymentMethod1" ColumnName="PaymentMethod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequestStatus">
+      <EntityTypeMapping TypeName="TaskInsiderModel.RequestStatu">
+        <MappingFragment StoreEntitySet="RequestStatus">
+          <ScalarProperty Name="RequestStatusID" ColumnName="RequestStatusID" />
+          <ScalarProperty Name="RequestStatus" ColumnName="RequestStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Services">
+      <EntityTypeMapping TypeName="TaskInsiderModel.Service">
+        <MappingFragment StoreEntitySet="Service">
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+          <ScalarProperty Name="ServiceTypeID" ColumnName="ServiceTypeID" />
+          <ScalarProperty Name="InsiderID" ColumnName="InsiderID" />
+          <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+          <ScalarProperty Name="HourlyRate" ColumnName="HourlyRate" />
+          <ScalarProperty Name="MinBookableHours" ColumnName="MinBookableHours" />
+          <ScalarProperty Name="ServiceCharge" ColumnName="ServiceCharge" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceOrderItems">
+      <EntityTypeMapping TypeName="TaskInsiderModel.ServiceOrderItem">
+        <MappingFragment StoreEntitySet="ServiceOrderItems">
+          <ScalarProperty Name="ServiceOrderItemsID" ColumnName="ServiceOrderItemsID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceRequests">
+      <EntityTypeMapping TypeName="TaskInsiderModel.ServiceRequest">
+        <MappingFragment StoreEntitySet="ServiceRequest">
+          <ScalarProperty Name="ServiceRequestID" ColumnName="ServiceRequestID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="RelatedServiceRequestID" ColumnName="RelatedServiceRequestID" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+          <ScalarProperty Name="InsiderID" ColumnName="InsiderID" />
+          <ScalarProperty Name="HoursOverMinimum" ColumnName="HoursOverMinimum" />
+          <ScalarProperty Name="TotalHoursWorked" ColumnName="TotalHoursWorked" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="FinalEarnings" ColumnName="FinalEarnings" />
+          <ScalarProperty Name="ClientPaymentStatusID" ColumnName="ClientPaymentStatusID" />
+          <ScalarProperty Name="RequestStatusID" ColumnName="RequestStatusID" />
+          <ScalarProperty Name="ServiceCompletionDate" ColumnName="ServiceCompletionDate" />
+          <ScalarProperty Name="InsiderPayStatusID" ColumnName="InsiderPayStatusID" />
+          <ScalarProperty Name="InsiderPayDate" ColumnName="InsiderPayDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceTypes">
+      <EntityTypeMapping TypeName="TaskInsiderModel.ServiceType">
+        <MappingFragment StoreEntitySet="ServiceType">
+          <ScalarProperty Name="ServiceTypeID" ColumnName="ServiceTypeID" />
+          <ScalarProperty Name="ServiceImageFileName" ColumnName="ServiceImageFileName" />
+          <ScalarProperty Name="ServiceTypeName" ColumnName="ServiceTypeName" />
+          <ScalarProperty Name="ServiceTypeDescription" ColumnName="ServiceTypeDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Skills">
+      <EntityTypeMapping TypeName="TaskInsiderModel.Skill">
+        <MappingFragment StoreEntitySet="Skill">
+          <ScalarProperty Name="SkillID" ColumnName="SkillID" />
+          <ScalarProperty Name="SkillName" ColumnName="SkillName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SkillLevels">
+      <EntityTypeMapping TypeName="TaskInsiderModel.SkillLevel">
+        <MappingFragment StoreEntitySet="SkillLevel">
+          <ScalarProperty Name="SkillLevelID" ColumnName="SkillLevelID" />
+          <ScalarProperty Name="SkillLevelName" ColumnName="SkillLevelName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTypes">
+      <EntityTypeMapping TypeName="TaskInsiderModel.UserType">
+        <MappingFragment StoreEntitySet="UserType">
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="InsiderID" ColumnName="InsiderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
