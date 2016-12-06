@@ -79,4 +79,3 @@ c:\users\iykef\onedrive\documents\visual studio 2015\Projects\TaskInsider\TaskIn
 c:\users\iykef\onedrive\documents\visual studio 2015\Projects\TaskInsider\TaskInsider\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 c:\users\iykef\onedrive\documents\visual studio 2015\Projects\TaskInsider\TaskInsider\obj\Debug\TaskInsider.dll
 c:\users\iykef\onedrive\documents\visual studio 2015\Projects\TaskInsider\TaskInsider\obj\Debug\TaskInsider.pdb
-c:\users\iykef\onedrive\documents\visual studio 2015\Projects\TaskInsider\TaskInsider\obj\Debug\TaskInsider.csprojResolveAssemblyReference.cache

@@ -397,7 +397,7 @@ namespace TaskInsider
         public int InsiderID { get; set; }
 
         [DisplayName("Skill")]
-        public int SkilID { get; set; }
+        public int SkillID { get; set; }
 
         [DisplayName("Level")]
         public int SkillLevelID { get; set; }
@@ -474,18 +474,18 @@ namespace TaskInsider
 
         [DisplayName("Rate")]
         [Required(ErrorMessage = "Please enter hourly rate")]
-        [MaxLength(50, ErrorMessage = "rate can't be more than 50 characters")]
+        //[MaxLength(50, ErrorMessage = "rate can't be more than 50 characters")]
         public decimal HourlyRate { get; set; }
 
         [DisplayName("Min Hours")]
         [Required(ErrorMessage = "Minimum Bookable hours is required")]
-        [MaxLength(50, ErrorMessage = "Bookable hours can't be more than 50 characters")]
+        //[MaxLength(50, ErrorMessage = "Bookable hours can't be more than 50 characters")]
         public int MinBookableHours { get; set; }
 
         [DisplayName("Service Fee (in %)")]
         [Description("This amount will be deducted from insider earnings. Enter without % sign")]
         [Required(ErrorMessage = "Enter a percentage without %")]
-        [MaxLength(50, ErrorMessage = "Percentage can't be more than 50 characters")]
+        //[MaxLength(50, ErrorMessage = "Percentage can't be more than 50 characters")]
         public decimal ServiceCharge { get; set; }
     }
 
@@ -527,23 +527,23 @@ namespace TaskInsider
 
         [DisplayName("Hours Over Min")]
         [Description("Hours worked, that is over minimum hours booked leave blank if service is ongoing")]
-        [MaxLength(50, ErrorMessage = "Hours over minimum hours can't be more than 50 characters")]
+        //[MaxLength(50, ErrorMessage = "Hours over minimum hours can't be more than 50 characters")]
         public int? HoursOverMinimum { get; set; }
 
         [DisplayName("Total Hours")]
         [Description("Min Hours + Hours Over Min or enter only Min Hours if service is ongoing")]
         [Required(ErrorMessage = "Please enter final total or enter Min hours if total is not yet known")]
-        [MaxLength(50, ErrorMessage = "Total hours can't be more than 50 characters")]
+        //[MaxLength(50, ErrorMessage = "Total hours can't be more than 50 characters")]
         public int TotalHoursWorked { get; set; }
 
         [DisplayName("Total Amount")]
         [Description("Min hours + Hours Over Min X Hourly Rate or leave blank if service is ongoing")]
-        [MaxLength(50, ErrorMessage = "amount can't be more than 50 characters")]
+       // [MaxLength(50, ErrorMessage = "amount can't be more than 50 characters")]
         public decimal? TotalAmount { get; set; }
 
         [DisplayName("Amount Payable")]
         [Description("Amt Payable after fee deduction ex. Tot amt = $100 if serv fee = 25% then payable = $75")]
-        [MaxLength(50, ErrorMessage = "amount can't be more than 50 characters")]
+        //[MaxLength(50, ErrorMessage = "amount can't be more than 50 characters")]
         public decimal? FinalEarnings { get; set; }
 
         [DisplayName("Payment Status")]

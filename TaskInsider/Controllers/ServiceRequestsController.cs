@@ -17,7 +17,7 @@ namespace TaskInsider.Controllers
         // GET: ServiceRequests
         public ActionResult Index()
         {
-            var serviceRequests = db.ServiceRequests.Include(s => s.Client).Include(s => s.ClientPaymentStatu).Include(s => s.Insider).Include(s => s.InsiderPayStatu).Include(s => s.RequestStatu).Include(s => s.Service).Include(s => s.ServiceRequest2);
+            var serviceRequests = db.ServiceRequests.Include(s => s.Client).Include(s => s.ClientPaymentStatu).Include(s => s.Insider).Include(s => s.InsiderPayStatu).Include(s => s.RequestStatu).Include(s => s.Service);
             return View(serviceRequests.ToList());
         }
 
@@ -45,7 +45,7 @@ namespace TaskInsider.Controllers
             ViewBag.InsiderPayStatusID = new SelectList(db.InsiderPayStatus, "InsiderPayStatusID", "InsiderPayStatus");
             ViewBag.RequestStatusID = new SelectList(db.RequestStatus, "RequestStatusID", "RequestStatus");
             ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName");
-            ViewBag.RelatedServiceRequestID = new SelectList(db.ServiceRequests, "ServiceRequestID", "ServiceRequestID");
+            //ViewBag.RelatedServiceRequestID = new SelectList(db.ServiceRequests, "ServiceRequestID", "ServiceRequestID");
             return View();
         }
 
@@ -54,7 +54,7 @@ namespace TaskInsider.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ServiceRequestID,ClientID,RelatedServiceRequestID,ServiceID,InsiderID,HoursOverMinimum,TotalHoursWorked,TotalAmount,FinalEarnings,ClientPaymentStatusID,RequestStatusID,ServiceCompletionDate,InsiderPayStatusID,InsiderPayDate")] ServiceRequest serviceRequest)
+        public ActionResult Create([Bind(Include = "ServiceRequestID,ClientID,ServiceID,InsiderID,HoursOverMinimum,TotalHoursWorked,ClientPaymentStatusID,RequestStatusID,ServiceCompletionDate,InsiderPayStatusID,InsiderPayDate")] ServiceRequest serviceRequest)
         {
             if (ModelState.IsValid)
             {
@@ -69,7 +69,7 @@ namespace TaskInsider.Controllers
             ViewBag.InsiderPayStatusID = new SelectList(db.InsiderPayStatus, "InsiderPayStatusID", "InsiderPayStatus", serviceRequest.InsiderPayStatusID);
             ViewBag.RequestStatusID = new SelectList(db.RequestStatus, "RequestStatusID", "RequestStatus", serviceRequest.RequestStatusID);
             ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", serviceRequest.ServiceID);
-            ViewBag.RelatedServiceRequestID = new SelectList(db.ServiceRequests, "ServiceRequestID", "ServiceRequestID", serviceRequest.RelatedServiceRequestID);
+            //ViewBag.RelatedServiceRequestID = new SelectList(db.ServiceRequests, "ServiceRequestID", "ServiceRequestID", serviceRequest.RelatedServiceRequestID);
             return View(serviceRequest);
         }
 
@@ -91,7 +91,7 @@ namespace TaskInsider.Controllers
             ViewBag.InsiderPayStatusID = new SelectList(db.InsiderPayStatus, "InsiderPayStatusID", "InsiderPayStatus", serviceRequest.InsiderPayStatusID);
             ViewBag.RequestStatusID = new SelectList(db.RequestStatus, "RequestStatusID", "RequestStatus", serviceRequest.RequestStatusID);
             ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", serviceRequest.ServiceID);
-            ViewBag.RelatedServiceRequestID = new SelectList(db.ServiceRequests, "ServiceRequestID", "ServiceRequestID", serviceRequest.RelatedServiceRequestID);
+            //ViewBag.RelatedServiceRequestID = new SelectList(db.ServiceRequests, "ServiceRequestID", "ServiceRequestID", serviceRequest.RelatedServiceRequestID);
             return View(serviceRequest);
         }
 
@@ -100,7 +100,7 @@ namespace TaskInsider.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ServiceRequestID,ClientID,RelatedServiceRequestID,ServiceID,InsiderID,HoursOverMinimum,TotalHoursWorked,TotalAmount,FinalEarnings,ClientPaymentStatusID,RequestStatusID,ServiceCompletionDate,InsiderPayStatusID,InsiderPayDate")] ServiceRequest serviceRequest)
+        public ActionResult Edit([Bind(Include = "ServiceRequestID,ClientID,ServiceID,InsiderID,HoursOverMinimum,TotalHoursWorked,ClientPaymentStatusID,RequestStatusID,ServiceCompletionDate,InsiderPayStatusID,InsiderPayDate")] ServiceRequest serviceRequest)
         {
             if (ModelState.IsValid)
             {
@@ -114,7 +114,7 @@ namespace TaskInsider.Controllers
             ViewBag.InsiderPayStatusID = new SelectList(db.InsiderPayStatus, "InsiderPayStatusID", "InsiderPayStatus", serviceRequest.InsiderPayStatusID);
             ViewBag.RequestStatusID = new SelectList(db.RequestStatus, "RequestStatusID", "RequestStatus", serviceRequest.RequestStatusID);
             ViewBag.ServiceID = new SelectList(db.Services, "ServiceID", "ServiceName", serviceRequest.ServiceID);
-            ViewBag.RelatedServiceRequestID = new SelectList(db.ServiceRequests, "ServiceRequestID", "ServiceRequestID", serviceRequest.RelatedServiceRequestID);
+            //ViewBag.RelatedServiceRequestID = new SelectList(db.ServiceRequests, "ServiceRequestID", "ServiceRequestID", serviceRequest.RelatedServiceRequestID);
             return View(serviceRequest);
         }
 

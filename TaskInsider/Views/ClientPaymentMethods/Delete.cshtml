@@ -13,6 +13,30 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.Client.ClientFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.ClientFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.ClientLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.ClientLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentMethod.PaymentMethod1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentMethod.PaymentMethod1)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.CardNumber)
         </dt>
 
@@ -35,23 +59,7 @@
         <dd>
             @Html.DisplayFor(model => model.CvC)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Client.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Client.UserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PaymentMethod.PaymentMethod1)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PaymentMethod.PaymentMethod1)
-        </dd>
-
+      
     </dl>
 
     @using (Html.BeginForm()) {
